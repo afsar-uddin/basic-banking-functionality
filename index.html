@@ -7,6 +7,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Banking Deposit, Withdraw & Balance</title>
     <link rel="stylesheet" href="tailwind.min.css">
+    <style>
+        #deposit-warning,
+        #withdraw-warning,
+        #withdraw-warning-0 {
+            display: none;
+        }
+
+        #deposit-warning.dnone,
+        #withdraw-warning.dnone,
+        #withdraw-warning-0.dnone {
+            display: block;
+        }
+
+        .dnone {
+            text-align: center;
+            font-weight: 600;
+            color: red;
+            margin: 30px 0;
+            text-transform: capitalize;
+            font-size: 28px;
+            display: inline-block;
+            background-color: #f9f9f9;
+            padding: 30px 0;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 
 <body>
@@ -27,13 +53,13 @@
                 </div>
                 <div class="bg-yellow-300 p-6 rounded">
                     <h3 class="text-2xl">Balance</h3>
-                    <h4 class="text-4xl font-semibold">$<span id="balance-total">1240</span></h4>
+                    <h4 class="text-4xl font-semibold">$<span id="balance-total">500</span></h4>
                 </div>
             </div>
         </section>
         <!-- deposit and withdraw -->
         <section>
-            <div class="grid grid-cols-2 gap-4">
+            <div class="grid grid-cols-2 gap-4" id="form">
                 <div class="bg-red-100 p-6">
                     <h3 class="text-2xl mb-4">Please deposit</h3>
                     <div>
@@ -53,6 +79,9 @@
                     </div>
                 </div>
             </div>
+            <div id="deposit-warning">you must input more than $0</div>
+            <div id="withdraw-warning">Not able to pay, more than current balance</div>
+            <div id="withdraw-warning-0">you must input more than $0</div>
         </section>
     </main>
     <script src="scripts.js"></script>
