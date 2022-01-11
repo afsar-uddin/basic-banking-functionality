@@ -36,12 +36,10 @@ function updateBalance(amount, isAdd) {
 document.getElementById('deposit-btn').addEventListener('click', function () {
     const newDepositAmount = getInputValue('deposit-input');
     // console.log(newDepositAmount)
-
     if (newDepositAmount > 0) {
         updateTotalField('deposit-total', newDepositAmount);
         updateBalance(newDepositAmount, true);
-    }
-    if (newDepositAmount !== '') {
+    } else if (newDepositAmount !== '') {
         document.getElementById('deposit-warning').classList.add('dnone');
         setTimeout(() => {
             document.getElementById('deposit-warning').classList.remove('dnone');
@@ -59,8 +57,12 @@ document.getElementById('withdraw-btn').addEventListener('click', function () {
         updateTotalField('withdraw-total', withdrawAmount);
 
         updateBalance(withdrawAmount, false);
-    }
-    if (withdrawAmount > currentBalance) {
+    } else if (withdrawAmount === currentBalance) {
+        document.getElementById('not-empty').classList.add('dnone');
+        setTimeout(() => {
+            document.getElementById('not-empty').classList.remove('dnone');
+        }, 2000);
+    } else if (withdrawAmount > currentBalance) {
         document.getElementById('withdraw-warning').classList.add('dnone');
         setTimeout(() => {
             document.getElementById('withdraw-warning').classList.remove('dnone');
